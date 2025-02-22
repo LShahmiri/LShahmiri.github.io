@@ -23,7 +23,7 @@ avatar_image: /img/LidaShahmiri.jpg
 #-------------------------------
 # Contact links
 linkedln: "https://www.linkedin.com/in/lida-shahmiri/" # Add your linkedln handle
-github: "https://github.com/LShamiri/"  # Add your github handle
+github: "https://github.com/LShahmiri/"  # Add your github handle
 
 paginate: 6
 paginate_path: "/page/:num"
