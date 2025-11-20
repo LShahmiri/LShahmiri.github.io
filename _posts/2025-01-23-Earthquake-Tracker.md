@@ -7,6 +7,6 @@ tags: [Tableau, Data Viz]
 
 This is a Tableau Dashboard that tracks global Earthquake activity across a 30-day period
 
-<a href="https://public.tableau.com/app/profile/lida.shahmiri/viz/Earthquake-Dashboard/EarthquakeTracker" target="_blank">
+<a href="https://public.tableau.com/views/Earthquake-Dashboard/EarthquakeTracker" target="_blank">
    Open Earthquake Tracker Dashboard
 </a>
