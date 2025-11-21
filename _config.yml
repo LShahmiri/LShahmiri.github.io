@@ -9,7 +9,7 @@ plugins:
 #-------------------------------
 # General Site Settings
 title: Lida Shahmiri 
-description: "Hi I'm Lida, and I'm a Data Scientist.  My portfolio focuses on interesting projects I've recently undertaken, with a strong emphasis on business impact. Please visit my Github & LinkedIn pages (or download my Resume) by using the links below!"
+description: "I am a Doctoral researcher in computer science, specialised in statistical modelling, with expertise in analysing large datasets using Python and ML to draw inferences. My specific interest is in developing scalable ML pipelines and promoting interdisciplinary research that combines AI theory and practice with domain expertise. I have worked with interdisciplinary teams and have strong communication skills, having delivered numerous research and outreach talks to diverse audiences. Please visit my Github & LinkedIn pages (or download my Resume) by using the links below!"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
