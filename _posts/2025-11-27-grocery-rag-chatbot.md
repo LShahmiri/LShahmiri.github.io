@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ABC Grocery AI Assistant – RAG Chatbot"
-image: "/posts/ABC-Grocery.png"
+image: "/posts/ABC.png"
 tags: [OpenAI, LLM, RAG, ChatBot,Langchain, LandSmith, Python]
 ---
 
