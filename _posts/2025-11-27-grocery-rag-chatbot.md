@@ -3,7 +3,7 @@ layout: post
 title: "ABC Grocery AI Assistant – RAG Chatbot"
 date: 2025-02-01
 categories: AI Machine-Learning RAG Chatbot
-img: /img/rag_chatbot_cover.png
+img: LShahmiri.github.io/img/ABC.png
 ---
 
 ### 🛒 ABC Grocery AI Assistant (RAG Chatbot)
