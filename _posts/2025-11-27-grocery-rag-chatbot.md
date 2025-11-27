@@ -5,7 +5,7 @@ img: "/posts/ABC.png"
 tags: [OpenAI, LLM, RAG, ChatBot,Langchain, LandSmith, Python]
 ---
 
-### 🛒 ABC Grocery AI Assistant (RAG Chatbot)
+### ABC Grocery AI Assistant (RAG Chatbot)
 
 This project is an AI-powered **Retrieval-Augmented Generation (RAG)** chatbot designed to support customers and staff of **ABC Grocery**.  
 It retrieves verified information from an internal help guide using **LangChain, ChromaDB, and OpenAI embeddings**, ensuring accurate and hallucination-free answers.
