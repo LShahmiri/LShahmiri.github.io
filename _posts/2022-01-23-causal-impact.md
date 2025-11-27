@@ -5,7 +5,7 @@ image: "/posts/causal-impact-title-img.png"
 tags: [Causal Impact Analysis, Python]
 ---
 
-In this project we use Causal Impact Analysis to analyse & understand the sales uplift of customers that joined the new "Delivery Club" campaign!.
+In this project I use Causal Impact Analysis to analyse & understand the sales uplift of customers that joined the new "Delivery Club" campaign!.
 
 # Table of contents
 
@@ -337,5 +337,6 @@ It would be interesting to track this uplift over time and see if:
 * It continues to grow
 * It flattens or returns to normal
 * We see any form of uplift pull-forward
+
 
 It would also be interesting to analyse what it is that is making up this uplift.  Are customers increasing their spend across the same categories - or are they buying into new categories
