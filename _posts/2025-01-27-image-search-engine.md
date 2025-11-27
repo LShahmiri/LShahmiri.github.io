@@ -5,7 +5,7 @@ image: "/posts/dl-search-engine-title-img.png"
 tags: [Deep Learning, CNN, Data Science, Computer Vision, Python]
 ---
 
-In this project we build a Deep Learning based Image Search Engine that will help customers find similar products to ones they want!
+In this project I build a Deep Learning based Image Search Engine that will help customers find similar products to ones they want!
 
 # Table of contents
 
@@ -471,3 +471,4 @@ We only looked at Cosine Similarity here, it would be interesting to investigate
 It would be beneficial to come up with a way to quantify the quality of the search results.  This could come from customer feedback, or from click-through rates on the site.
 
 Here we utilised VGG16. It would be worthwhile testing other available pre-trained networks such as ResNet, Inception, and the DenseNet networks.
+
