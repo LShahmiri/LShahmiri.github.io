@@ -1,147 +1,218 @@
 ---
 layout: post
 title: "ABC Grocery AI Assistant – RAG Chatbot"
-image: "/img/posts/ABC.png"
+image: "/posts/ABC.png"
 tags: [OpenAI, LLM, RAG, ChatBot, LangChain, ChromaDB, Streamlit, Python]
 ---
 
-### ABC Grocery AI Assistant (RAG Chatbot)
-
-This project is an AI-powered **Retrieval-Augmented Generation (RAG)** chatbot built to support customers and staff of **ABC Grocery**.  
-It retrieves verified information from an internal help guide using **LangChain, ChromaDB and OpenAI embeddings**, ensuring grounded, hallucination-free answers.
+In this project, I built an AI-powered **Retrieval-Augmented Generation (RAG)** chatbot designed to support customers and staff of **ABC Grocery** by providing *accurate, fast, hallucination-free answers* using LangChain, ChromaDB, OpenAI embeddings, and Streamlit.
 
 ---
 
-## 00. Project Overview  
-
-### Context  
-ABC Grocery maintains an internal help guide covering store hours, delivery policies, membership, and in-store services.  
-Staff often need to search through this document manually, and customers repeatedly ask the same questions via email or phone.
-
-The goal was to build a **conversational assistant** that:
-
-- Answers questions using **only** the approved help guide  
-- Remembers user details within a session (e.g. name, previous questions)  
-- Can be easily shared as a **web app** and showcased in my portfolio  
-
-### Actions  
-
-I designed and implemented a complete RAG pipeline:
-
-- Parsed the internal help guide (`abc-grocery-help-desk-data.md`) and split it into semantically meaningful chunks using **markdown-aware text splitting**.  
-- Embedded all chunks with **OpenAI’s `text-embedding-3-small`** model.  
-- Stored embeddings in a local **ChromaDB** vector store with cosine similarity search.  
-- Wrapped retrieval + generation in a **LangChain** pipeline with a strict system prompt that forbids the model from inventing policies.  
-- Added **conversational memory** using `RunnableWithMessageHistory`, so the assistant can remember the user’s name and previous context within a session.  
-- Built an interactive **Streamlit** front-end with a chat UI and sidebar explaining what the assistant can and cannot do.  
-- Deployed the app on **Streamlit Cloud** and published the source code on GitHub.
-
-### Results  
-
-- Users can ask natural-language questions such as *“What’s your returns policy for meat and milk?”* or *“What time do you open on Sundays?”* and receive consistent, policy-correct answers.  
-- The assistant **refuses** to answer questions outside the help guide (e.g. “How old am I?”) and instead shows a safe fallback message directing users to a human contact.  
-- Session-level memory allows simple personalization: the assistant can remember the user’s name and refer back to earlier questions while still being fully grounded in the document.
-
-### Growth / Next Steps  
-
-- Extend the knowledge base to multiple documents (FAQ, HR policies, training manuals).  
-- Add role-based views (customer vs. staff) with different answer styles.  
-- Log anonymous queries for analytics and identify gaps in the help documentation.  
-- Integrate authentication and connect to live backend APIs (e.g. real product availability).
+# Table of Contents
+- [00. Project Overview](#overview)
+  - [Context](#context)
+  - [Actions](#actions)
+  - [Results](#results)
+  - [Growth / Next Steps](#growth)
+- [01. System Design Overview](#system-design)
+- [02. Document Processing & Vectorisation](#document-processing)
+- [03. RAG Architecture](#rag-architecture)
+- [04. Prompt Engineering & Safety Rules](#prompt)
+- [05. Streamlit Chat UI](#ui)
+- [06. Full Code](#code)
+- [07. Discussion, Growth & Next Steps](#discussion)
 
 ---
 
-## 01. Data Source – Internal Help Guide  
+# 00. Project Overview <a name="overview"></a>
 
-The chatbot is grounded on a single markdown document:
+## **Context** <a name="context"></a>
+ABC Grocery maintains an internal help-desk document containing key operational information such as:
+- delivery/pickup policies  
+- store hours  
+- membership programs  
+- in-store services  
+- payment options  
 
-- **File:** `abc-grocery-help-desk-data.md`  
-- **Structure:** headings such as `### Returns & Refunds`, `### Delivery & Pickup`, `### Store Hours`, etc.  
-- **Processing:**  
-  - Loaded with `TextLoader`  
-  - Split using `MarkdownHeaderTextSplitter` so each section becomes a “document chunk” with its own header-based ID  
+Store staff needed a **reliable chatbot** that:
+- uses *only* company-approved information  
+- remembers user preferences  
+- prevents hallucinations  
+- works like a real support assistant  
 
-This structure ensures that retrieval returns **semantically coherent sections** instead of arbitrary text slices.
-
----
-
-## 02. RAG Architecture  
-
-### Embeddings & Vector Store  
-
-- Embeddings: `OpenAIEmbeddings(model="text-embedding-3-small")`  
-- Vector store: **Chroma** with cosine distance and persistent storage in `abc_vector_db_chroma/`.  
-- Retrieval strategy:  
-  - `similarity_score_threshold` with `k = 6`  
-  - Score threshold of `0.25` to filter out irrelevant chunks  
-
-### Prompting & Grounding  
-
-The system prompt enforces strict rules:
-
-- Only use information inside `<context> ... </context>`  
-- Do **not** use external or world knowledge  
-- If the answer is not in the context, return a fixed fallback message:  
-  > “I don’t have that information in the provided context. Please email human@abc-grocery.com and they will be glad to assist you!.”
-
-This gives **predictable, auditable behaviour** suitable for a real help-desk setting.
+This led to building a **RAG chatbot** with strict grounding rules.
 
 ---
 
-## 03. Conversational Memory  
+## **Actions** <a name="actions"></a>
 
-To make the assistant feel more natural while staying safe:
+I built a system that:
 
-- I used `RunnableWithMessageHistory` from LangChain.  
-- A simple in-memory `ChatMessageHistory` store is keyed by a `session_id` generated in Streamlit.  
-- The LLM sees previous turns as `history`, which it can use to:  
-  - Remember the user’s name  
-  - Keep track of which policy area we are discussing  
-  - Provide follow-up clarification without re-asking everything  
-
-Importantly, **history is never treated as a source of company facts** — only as personalization context.
-
----
-
-## 04. Streamlit Interface  
-
-The UI is implemented in `streamlit_app.py`:
-
-- Wide-layout chat interface using `st.chat_message` and `st.chat_input`.  
-- A sidebar titled **“ABC Grocery AI Assistant”** summarises what the bot can help with:  
-  - Store hours & locations  
-  - Delivery & pickup policies  
-  - Membership & rewards  
-  - Payment options  
-  - In-store services  
-  - Product availability (as described in the help guide)  
-- “Clear conversation” button resets the Streamlit session state and the LangChain message history.  
-- A concise header banner:  
-  > “Welcome to ABC Grocery AI Assistant! Ask anything about ABC Grocery.”
-
-The result is a **clean, production-style demo** that non-technical stakeholders can use immediately.
+### ✔️ Loads an internal help-desk `.md` document  
+### ✔️ Splits content into semantic chunks  
+### ✔️ Embeds each chunk using **OpenAI text-embedding-3-small**  
+### ✔️ Stores vectors in **ChromaDB**  
+### ✔️ Retrieves relevant chunks during queries  
+### ✔️ Runs an LLM with strict guardrails  
+### ✔️ Includes message memory  
+### ✔️ Provides a modern Streamlit chat UI  
 
 ---
 
-## 05. Tech Stack  
+## **Results** <a name="results"></a>
 
-- **Language:** Python  
-- **LLM & Embeddings:** OpenAI (GPT-5.1 via `ChatOpenAI`, `text-embedding-3-small`)  
-- **RAG Framework:** LangChain  
-- **Vector Store:** ChromaDB (cosine similarity)  
-- **Frontend:** Streamlit  
-- **Document Processing:** Markdown-aware splitting with `MarkdownHeaderTextSplitter`  
-
----
-
-## 06. Live Demo & Code  
-
-- **Live Demo:**  
-  👉 [Try the Chatbot](https://grocery-rag-chatbot-with-memory.streamlit.app)
-
-- **Source Code:**  
-  👉 [View Code on GitHub](https://github.com/LShahmiri/Grocery-RAG-Chatbot)
+The chatbot successfully:
+- Answers grocery-related questions *accurately*
+- Uses **only the provided internal document**
+- Avoids hallucinations  
+- Remembers the user’s name and preferences  
+- Provides a real-time chat-like experience  
 
 ---
 
-If you’d like to explore how a RAG-based assistant can be adapted for your own help-desk or internal knowledge base, this project is a compact, end-to-end example of how to go from **raw markdown documentation** to a **usable AI assistant**.
+## **Growth / Next Steps** <a name="growth"></a>
+
+Next improvements could include:
+- Multi-document ingestion (PDF, web pages, policy updates)
+- Staff-only mode with secure login
+- Analytics dashboard for customer questions
+- Replacing ChromaDB with a scalable vector DB (e.g., Azure AI Search)
+
+---
+
+---
+
+# 01. System Design Overview <a name="system-design"></a>
+
+User → Streamlit Chat UI
+→ RAG Pipeline
+→ ChromaDB Vector Search
+→ Prompt Template
+→ OpenAI GPT-5
+→ Response
+
+Components:
+- **LangChain** for orchestration  
+- **MarkdownHeaderTextSplitter** for structured document chunking  
+- **Chroma Vector DB**  
+- **OpenAI Models** for embeddings + chat  
+- **Streamlit** for UI  
+
+---
+
+# 02. Document Processing & Vectorisation <a name="document-processing"></a>
+
+We load the internal help-desk file:
+
+```python
+raw_filename = "abc-grocery-help-desk-data.md"
+loader = TextLoader(raw_filename, encoding="utf-8")
+docs = loader.load()
+text = docs[0].page_content
+Then split based on headers:
+
+splitter = MarkdownHeaderTextSplitter(
+    headers_to_split_on=[("###", "id")],
+    strip_headers=True,
+)
+chunked_docs = splitter.split_text(text)
+Generate embeddings:
+embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+
+Store vectors:
+vectorstore = Chroma.from_documents(
+    documents=chunked_docs,
+    embedding=embeddings,
+    persist_directory="abc_vector_db_chroma",
+)
+
+03. RAG Architecture <a name="rag-architecture"></a>
+
+retriever = vectorstore.as_retriever(
+    search_type="similarity_score_threshold",
+    search_kwargs={"k": 6, "score_threshold": 0.25},
+)
+RAG chain:
+rag_answer_chain = (
+    {
+        "context": itemgetter("input") | retriever | RunnableLambda(format_docs),
+        "input": itemgetter("input"),
+        "history": itemgetter("history"),
+    }
+    | prompt_template
+    | llm
+)
+04. Prompt Engineering & Safety Rules <a name="prompt"></a>
+
+Key constraints:
+1) ONLY answer using <context>  
+2) NEVER use world knowledge  
+3) If missing info → return fallback message  
+4) History is for personalization only  
+5) <context> overrides previous chat  
+Fallback message:
+
+“I don’t have that information in the provided context. Please email human@abc-grocery.com
+ and they will be glad to assist you!.”
+05. Streamlit Chat UI <a name="ui"></a>
+Header:
+
+st.markdown(
+    "<div class='emoji-title'>🛒 ABC Grocery AI Assistant</div>",
+    unsafe_allow_html=True
+)
+
+
+Sidebar:
+
+with st.sidebar:
+    st.markdown("## 🛒 ABC Grocery AI Assistant")
+
+
+Chat loop:
+
+user_input = st.chat_input("Type your question here...")
+
+if user_input:
+    resp = chain_with_history.invoke(
+        {"input": user_input},
+        config={"configurable": {"session_id": st.session_state.session_id}}
+    )
+
+06. Full Code (RAG + Streamlit) <a name="code"></a>
+
+Full application code is provided below for transparency.
+
+<PASTE YOUR ENTIRE STREAMLIT CODE HERE — already included above>
+
+07. Discussion, Growth & Next Steps <a name="discussion"></a>
+
+This system demonstrates how RAG can:
+
+improve accuracy
+
+avoid hallucination
+
+provide contextual answers
+
+personalize user experience
+
+Future work:
+
+integrate multi-store data
+
+add user authentication
+
+link to live inventory APIs
+
+generate analytics on user questions
+
+🔗 Live Demo
+
+👉 Try the Chatbot
+
+🔗 GitHub Repository
+
+👉 View Code on GitHub
+
