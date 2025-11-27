@@ -142,6 +142,7 @@ vectorstore = Chroma.from_documents(
     embedding=embeddings,
     persist_directory="abc_vector_db_chroma",
 )
+---
 # 03. RAG Architecture <a name="rag-architecture"></a>
 Retriever:
 
@@ -174,6 +175,7 @@ chain_with_history = RunnableWithMessageHistory(
     input_messages_key="input",
     history_messages_key="history",
 )
+---
 # 04. Prompt Engineering & Safety Rules <a name="prompt"></a>
 The system uses a robust guardrailed prompt:
 
@@ -187,7 +189,7 @@ Copy code
 Fallback message:
 
 “I don’t have that information in the provided context. Please email human@abc-grocery.com and they will be glad to assist you!.”
-
+---
 # 05. Streamlit Chat UI <a name="ui"></a>
 Header:
 
@@ -214,12 +216,14 @@ if user_input:
         {"input": user_input},
         config={"configurable": {"session_id": st.session_state.session_id}}
     )
+---
 # 06. Full Code <a name="code"></a>
 Below is the complete Streamlit application code powering the chatbot.
 
 python
 Copy code
 <PASTE YOUR FULL STREAMLIT CODE HERE — the exact code from your project>
+---
 # 07. Discussion, Growth & Next Steps <a name="discussion"></a>
 This project demonstrates:
 
