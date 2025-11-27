@@ -5,7 +5,7 @@ image: "/posts/ab-testing-title-img.png"
 tags: [AB Testing, Hypothesis Testing, Chi-Square, Python]
 ---
 
-In this project we apply Chi-Square Test For Independence (a Hypothesis Test) to assess the performance of two types of mailers that were sent out to promote a new service! 
+In this project I apply Chi-Square Test For Independence (a Hypothesis Test) to assess the performance of two types of mailers that were sent out to promote a new service! 
 
 # Table of contents
 
@@ -318,5 +318,6 @@ While we saw that the higher cost Mailer 2 had a higher signup rate (37.8%) than
 Without running this Hypothesis Test, the client may have concluded that they should always look to go with higher cost mailers - and from what we've seen in this test, that may not be a great decision.  It would result in them spending more, but not *necessarily* gaining any extra revenue as a result
 
 Our results here also do not say that there *definitely isn't a difference between the two mailers* - we are only advising that we should not make any rigid conclusions *at this point*.  
+
 
 Running more A/B Tests like this, gathering more data, and then re-running this test may provide us, and the client more insight!
