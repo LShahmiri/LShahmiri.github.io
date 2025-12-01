@@ -1,15 +1,15 @@
 ---
 layout: post
 title: "AI SQL Agent – Natural Language to SQL Query Generator"
-image: "/posts/SQL-AGENT-.png"
+image: "/posts/SQL-AGENT.png"
 tags: [OpenAI, LangChain, Agents, SQL, PostgreSQL, Flask, LLM]
 ---
 
-This project showcases a fully functional **AI-powered SQL Agent** capable of understanding **natural-language questions** and converting them into **optimized PostgreSQL SELECT queries** in real time.
+This project delivers a fully functional **AI-powered SQL Agent** capable of understanding **natural-language questions** and converting them into **optimized, safe PostgreSQL SELECT queries**.
 
-It integrates **LangChain Agents**, **OpenAI GPT-4.1**, **PostgreSQL**, and **Flask**, enabling intelligent and safe querying of structured data.
+It integrates **LangChain Agents**, **OpenAI GPT-4.1** (or GPT-5 if available), **PostgreSQL**, and **Flask**, enabling intelligent and secure querying of structured data.
 
-A live demo is deployed via **Render Cloud**, supporting real interactions through a simple web interface.
+A live demo is deployed on **Render Cloud**, supporting real interactions through a simple web interface.
 
 ---
 
@@ -21,10 +21,12 @@ A live demo is deployed via **Render Cloud**, supporting real interactions throu
 - [01. System Design](#system-design)
 - [02. Dataset & Schema](#schema)
 - [03. SQL Agent Architecture](#architecture)
-- [04. Safety Rules & Prompt Engineering](#prompt)
-- [05. Flask Web UI](#flask-ui)
-- [06. Full Code (Core Components)](#code)
-- [07. Discussion & Next Steps](#discussion)
+- [04. Prompt Engineering](#prompt)
+- [05. Flask Web App](#flask)
+- [06. Full Code](#code)
+- [07. Discussion](#discussion)
+- [Live Demo](#demo)
+- [GitHub Repo](#repo)
 
 ---
 
@@ -32,233 +34,164 @@ A live demo is deployed via **Render Cloud**, supporting real interactions throu
 
 ## Context <a name="context"></a>
 
-Organizations often have structured databases but lack an easy way for non-technical staff to explore them.  
-This project solves that problem by providing:
+A grocery/retail client needed an AI system that:
 
-- Natural-language to SQL translation  
-- Safe read-only access to analytics  
-- A web-based interface for interactive querying  
-- A controlled environment that prevents harmful SQL operations  
-
-The system uses:
-
-- **LangChain SQL Toolkit**  
-- **ChatOpenAI (GPT-4.1)**  
-- **PostgreSQL hosted on AWS**  
-- **Flask for deployment**  
-- **Render Cloud for hosting**  
+- understands natural-language analytics queries  
+- translates them into **validated SQL SELECT statements**  
+- prevents harmful write operations (DELETE, INSERT, UPDATE)  
+- ensures schema-aware output  
+- runs safely inside a Flask web interface  
 
 ---
 
 ## Actions <a name="actions"></a>
 
-I developed a production-ready **AI SQL Agent** that:
+I built an **AI SQL Agent** that:
 
-- Loads PostgreSQL schema dynamically  
-- Uses LangChain tools to restrict available tables  
-- Automatically generates valid, optimized SQL queries  
-- Ensures all outputs follow strict **read-only rules**  
-- Runs inside a Flask app with an HTML interface  
-- Supports live querying through HTML + POST requests  
+✔ Parses user questions  
+✔ Generates optimized PostgreSQL 16 SELECT queries  
+✔ Ensures safe read-only operations  
+✔ Auto-detects schema fields  
+✔ Executes the query and returns formatted answers  
+✔ Uses LangChain’s SQL toolkit + OpenAI LLM  
+✔ Exposes results via a clean Flask front-end  
 
 ---
 
 ## Results <a name="results"></a>
 
-- Converts English questions into executable SQL  
-- Prevents unsafe operations (no UPDATE/DELETE/DDL allowed)  
-- Returns clean SQL + natural-language explanation  
-- Fully deployed on Render  
-- Agent automatically adapts when tables change or grow  
+- Automatically converts human language → SQL  
+- Fully enforces **read-only safety**  
+- Handles aggregations, grouping, filtering, dates  
+- Produces clear natural-language summaries  
+- Deployable in production via Render  
+- Enables non-technical users to access analytical insights instantly  
 
 ---
 
 # 01. System Design <a name="system-design"></a>
 
-**User → Web UI → Flask Server → LangChain SQL Agent → PostgreSQL → Final Answer**
+**Pipeline:**
 
-Core components:
+User → Flask UI  
+→ LangChain SQL Agent  
+→ SQLDatabase Toolkit  
+→ PostgreSQL  
+→ Result Back to User  
 
-- **LangChain SQLDatabaseToolkit**
-- **ChatOpenAI GPT-4.1**
-- **SQLAlchemy engine**
-- **Agent with system prompt + tools**
-- **Flask frontend**
+Core Components:
 
-This ensures separation of concerns between UI, database, and AI logic.
+- **LangChain SQL Database Toolkit**  
+- **OpenAI LLM (4.1 or 5)**  
+- **PostgreSQL 16**  
+- **Flask** for the web interface  
+- **Render Cloud** for deployment  
 
 ---
 
 # 02. Dataset & Schema <a name="schema"></a>
 
-The system queries the following PostgreSQL tables:
+Two main tables inside schema **grocery_db**:
 
-### **1. grocery_db.customer_details**
+### `grocery_db.customer_details`
+- customer_id  
+- gender  
+- credit_score  
+- distance_from_store  
 
-| Column | Type | Description |
-|-------|------|-------------|
-| customer_id | INT | Unique per customer |
-| distance_from_store | NUMERIC | Miles from store |
-| gender | VARCHAR(2) | 'M' / 'F' |
-| credit_score | NUMERIC | 0.00–1.00 rating |
+### `grocery_db.transactions`
+- customer_id  
+- transaction_id  
+- transaction_date  
+- product_area_id  
+- num_items  
+- sales_cost  
 
----
-
-### **2. grocery_db.transactions**
-
-| Column | Type |
-|-------|------|
-| customer_id | INT |
-| transaction_id | INT |
-| product_area_id | INT |
-| num_items | INT |
-| sales_cost | NUMERIC |
-| transaction_date | DATE |
+Relationship: `customer_id` (1:N)
 
 ---
 
 # 03. SQL Agent Architecture <a name="architecture"></a>
 
-The agent uses:
+The agent is built using:
 
-- `ChatOpenAI` for reasoning  
-- `SQLDatabaseToolkit` for safe SQL tools  
-- `SQLDatabase` to read schema & execute queries  
+- `SQLDatabase`  
+- `SQLDatabaseToolkit`  
+- `ChatOpenAI`  
+- `create_agent`  
 
-**Pipeline:**
+It uses handcrafted system instructions ensuring:
 
-User Question
-→ LLM interprets question
-→ Generates SQL
-→ Executes query through SQLAlchemy
-→ Returns results + explanation
+### **Safety Rules**
+- Only SELECT queries  
+- No write operations  
+- Schema-aware output  
+- LIMIT 100 for raw rows  
 
----
-
-# 04. Safety Rules & Prompt Engineering <a name="prompt"></a>
-
-The system prompt enforces:
-
-✔ Only SELECT statements
-✔ No INSERT / UPDATE / DELETE / DROP
-✔ Auto-schema qualification: grocery_db.table
-✔ LIMIT 100 for raw rows
-✔ Ask clarifying questions when query is ambiguous
-
-
-This ensures **totally safe database access**.
+### **Query Logic Rules**
+- Distinct users  
+- Distinct transactions  
+- Aggregation discipline  
+- Proper joins  
 
 ---
 
-# 05. Flask Web UI <a name="flask-ui"></a>
+# 04. Prompt Engineering <a name="prompt"></a>
 
-Key UI features:
+The system prompt defines:
 
-- Ask natural-language questions  
-- Display SQL + results  
-- Light/Dark mode  
-- Simple clean interface  
+✔ Role: SQL data analyst  
+✔ Scope: read-only SQL  
+✔ Rules for aggregation  
+✔ Guidelines for handling ambiguity  
+✔ Examples of valid outputs  
 
-`app.py` handles POST requests and displays the answer.
+This ensures the agent always responds with:
+
+1. A valid SQL query  
+2. A short explanation  
+3. No destructive operations  
 
 ---
 
-# 06. Full Code (Core Components) <a name="code"></a>
+# 05. Flask Web App <a name="flask"></a>
 
-### **Connection & Agent Setup**
+A minimal Flask interface lets users:
+
+- type natural-language queries  
+- send them to the agent  
+- view SQL + results  
+
+The endpoint loads environment variables from Render’s dashboard instead of `.env`.
+
+---
+
+# 06. Full Code <a name="code"></a>
+
+Key parts of the AI agent:
 
 ```python
-import os
-import sqlalchemy as sa
-from dotenv import load_dotenv
-from langchain_community.utilities import SQLDatabase
 from langchain_openai import ChatOpenAI
+from langchain_community.utilities import SQLDatabase
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
 from langchain.agents import create_agent
+from langchain_core.messages import HumanMessage
 
-load_dotenv()
-
+# Connect to PostgreSQL (Render environment variables)
 POSTGRES_URI = (
     f"postgresql+psycopg2://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}"
     f"@{os.getenv('POSTGRES_HOST')}:{os.getenv('POSTGRES_PORT')}/{os.getenv('POSTGRES_DBNAME')}?sslmode=require"
 )
 
-engine = sa.create_engine(
-    POSTGRES_URI,
-    pool_pre_ping=True,
-    connect_args={"options": "-c statement_timeout=15000"}  # 15s timeout
-)
-
-db = SQLDatabase(
-    engine=engine,
-    schema="grocery_db",
-    include_tables=["customer_details", "transactions"]
-)
+engine = sa.create_engine(POSTGRES_URI)
+db = SQLDatabase(engine=engine, schema="grocery_db")
 
 sql_agent = ChatOpenAI(model="gpt-4.1", temperature=0)
-
 toolkit = SQLDatabaseToolkit(db=db, llm=sql_agent)
 tools = toolkit.get_tools()
 
 with open("agent/sql-agent-system-prompt.txt") as f:
-    system = f.read()
+    system_text = f.read()
 
-agent = create_agent(
-    model=sql_agent,
-    tools=tools,
-    system_prompt=system
-)
-Flask Endpoint
-
-
-from flask import Flask, render_template, request
-
-app = Flask(__name__)
-
-@app.route("/", methods=["GET", "POST"])
-def home():
-    answer = None
-
-    if request.method == "POST":
-        question = request.form.get("question")
-        if question:
-            result = agent.invoke({"messages": [{"role": "user", "content": question}]})
-            answer = result["messages"][-1].content
-
-    return render_template("index.html", answer=answer)
-
-if __name__ == "__main__":
-    app.run(debug=True)
-07. Discussion & Next Steps <a name="discussion"></a>
-
-This project demonstrates the power of AI-assisted analytics using:
-
-Autonomous SQL reasoning
-
-Strict safety rules
-
-Natural-language understanding
-
-Flask deployment
-
-Future improvements:
-
-Add JOIN recommendations
-
-Visualize results using charts
-
-Add user authentication
-
-Add query history & export options
-
-Dockerize for multi-cloud deployment
-
-🔗 Live Demo
-
-👉 https://sql-agent-1-te6s.onrender.com/
-
-🔗 GitHub Repository
-
-👉 https://github.com/LShahmiri/SQL-Agent
-
+agent = create_agent(model=sql_agent, tools=tools, system_prompt=system_text)
 
