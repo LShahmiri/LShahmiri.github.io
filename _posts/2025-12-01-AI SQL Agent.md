@@ -5,7 +5,7 @@ image: "/posts/SQL-AGENT-.png"
 tags: [OpenAI, LangChain, Agents, SQL, PostgreSQL, Flask, LLM]
 ---
 
-This project delivers a fully functional **AI-powered SQL Agent** capable of understanding **natural-language questions** and converting them into **optimized, safe PostgreSQL 16 SELECT queries** with human-friendly explanations.
+This project delivers a fully functional **AI-powered SQL Agent** capable of understanding **natural-language questions** and converting them into **optimized, safe SQL queries** with human-friendly explanations.
 
 It integrates **LangChain Agents**, **OpenAI GPT-4.1** (or GPT-5 if available), **PostgreSQL**, and **Flask**, enabling intelligent and secure querying of structured data.
 
@@ -47,8 +47,7 @@ They need:
 I built a complete **AI SQL Agent** that:
 
 - Loads database schema automatically  
-- Converts questions into optimized SQL queries  
-- Ensures 100% safety (SELECT-only, no updates/deletes)  
+- Converts questions into optimized SQL queries   
 - Executes SQL through SQLAlchemy  
 - Returns results + a human explanation  
 - Provides a clean Flask UI  
@@ -81,7 +80,7 @@ User → Flask UI
 
 - OpenAI GPT-4.1 (LLM reasoning)  
 - LangChain SQL Agent Toolkit  
-- PostgreSQL 16  
+- PostgreSQL   
 - SQLAlchemy  
 - Flask  
 - Render Cloud  
