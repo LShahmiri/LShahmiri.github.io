@@ -1,0 +1,196 @@
+---
+layout: post
+title: "AI SQL Agent – Natural Language to SQL Query Generator"
+image: "/posts/SQL-AGENT.png"
+tags: [OpenAI, LangChain, Agents, SQL, PostgreSQL, Flask, LLM]
+---
+
+This project delivers a fully functional **AI-powered SQL Agent** capable of understanding **natural-language questions** and converting them into **optimized, safe PostgreSQL SELECT queries**.
+
+It integrates **LangChain Agents**, **OpenAI GPT-4.1** (or GPT-5 if available), **PostgreSQL**, and **Flask**, enabling intelligent and secure querying of structured data.
+
+A live demo is deployed on **Render Cloud**, supporting real interactions through a simple web interface.
+
+---
+
+# Table of Contents
+- [00. Project Overview](#overview)
+  - [Context](#context)
+  - [Actions](#actions)
+  - [Results](#results)
+- [01. System Design](#system-design)
+- [02. Dataset & Schema](#schema)
+- [03. SQL Agent Architecture](#architecture)
+- [04. Prompt Engineering](#prompt)
+- [05. Flask Web App](#flask)
+- [06. Full Code](#code)
+- [07. Discussion](#discussion)
+- [Live Demo](#demo)
+- [GitHub Repo](#repo)
+
+---
+
+# 00. Project Overview <a name="overview"></a>
+
+## Context <a name="context"></a>
+
+A grocery/retail client needed an AI system that:
+
+- understands natural-language analytics queries  
+- translates them into **validated SQL SELECT statements**  
+- prevents harmful write operations (DELETE, INSERT, UPDATE)  
+- ensures schema-aware output  
+- runs safely inside a Flask web interface  
+
+---
+
+## Actions <a name="actions"></a>
+
+I built an **AI SQL Agent** that:
+
+✔ Parses user questions  
+✔ Generates optimized PostgreSQL 16 SELECT queries  
+✔ Ensures safe read-only operations  
+✔ Auto-detects schema fields  
+✔ Executes the query and returns formatted answers  
+✔ Uses LangChain’s SQL toolkit + OpenAI LLM  
+✔ Exposes results via a clean Flask front-end  
+
+---
+
+## Results <a name="results"></a>
+
+- Automatically converts human language → SQL  
+- Fully enforces **read-only safety**  
+- Handles aggregations, grouping, filtering, dates  
+- Produces clear natural-language summaries  
+- Deployable in production via Render  
+- Enables non-technical users to access analytical insights instantly  
+
+---
+
+# 01. System Design <a name="system-design"></a>
+
+**Pipeline:**
+
+User → Flask UI  
+→ LangChain SQL Agent  
+→ SQLDatabase Toolkit  
+→ PostgreSQL  
+→ Result Back to User  
+
+Core Components:
+
+- **LangChain SQL Database Toolkit**  
+- **OpenAI LLM (4.1 or 5)**  
+- **PostgreSQL 16**  
+- **Flask** for the web interface  
+- **Render Cloud** for deployment  
+
+---
+
+# 02. Dataset & Schema <a name="schema"></a>
+
+Two main tables inside schema **grocery_db**:
+
+### `grocery_db.customer_details`
+- customer_id  
+- gender  
+- credit_score  
+- distance_from_store  
+
+### `grocery_db.transactions`
+- customer_id  
+- transaction_id  
+- transaction_date  
+- product_area_id  
+- num_items  
+- sales_cost  
+
+Relationship: `customer_id` (1:N)
+
+---
+
+# 03. SQL Agent Architecture <a name="architecture"></a>
+
+The agent is built using:
+
+- `SQLDatabase`  
+- `SQLDatabaseToolkit`  
+- `ChatOpenAI`  
+- `create_agent`  
+
+It uses handcrafted system instructions ensuring:
+
+### **Safety Rules**
+- Only SELECT queries  
+- No write operations  
+- Schema-aware output  
+- LIMIT 100 for raw rows  
+
+### **Query Logic Rules**
+- Distinct users  
+- Distinct transactions  
+- Aggregation discipline  
+- Proper joins  
+
+---
+
+# 04. Prompt Engineering <a name="prompt"></a>
+
+The system prompt defines:
+
+✔ Role: SQL data analyst  
+✔ Scope: read-only SQL  
+✔ Rules for aggregation  
+✔ Guidelines for handling ambiguity  
+✔ Examples of valid outputs  
+
+This ensures the agent always responds with:
+
+1. A valid SQL query  
+2. A short explanation  
+3. No destructive operations  
+
+---
+
+# 05. Flask Web App <a name="flask"></a>
+
+A minimal Flask interface lets users:
+
+- type natural-language queries  
+- send them to the agent  
+- view SQL + results  
+
+The endpoint loads environment variables from Render’s dashboard instead of `.env`.
+
+---
+
+# 06. Full Code <a name="code"></a>
+
+Key parts of the AI agent:
+
+```python
+from langchain_openai import ChatOpenAI
+from langchain_community.utilities import SQLDatabase
+from langchain_community.agent_toolkits import SQLDatabaseToolkit
+from langchain.agents import create_agent
+from langchain_core.messages import HumanMessage
+
+# Connect to PostgreSQL (Render environment variables)
+POSTGRES_URI = (
+    f"postgresql+psycopg2://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}"
+    f"@{os.getenv('POSTGRES_HOST')}:{os.getenv('POSTGRES_PORT')}/{os.getenv('POSTGRES_DBNAME')}?sslmode=require"
+)
+
+engine = sa.create_engine(POSTGRES_URI)
+db = SQLDatabase(engine=engine, schema="grocery_db")
+
+sql_agent = ChatOpenAI(model="gpt-4.1", temperature=0)
+toolkit = SQLDatabaseToolkit(db=db, llm=sql_agent)
+tools = toolkit.get_tools()
+
+with open("agent/sql-agent-system-prompt.txt") as f:
+    system_text = f.read()
+
+agent = create_agent(model=sql_agent, tools=tools, system_prompt=system_text)
