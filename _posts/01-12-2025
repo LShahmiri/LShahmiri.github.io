@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "AI SQL Agent – Natural Language to SQL Query Generator"
-image: "/posts/AI_SQL_AGENT.png"
+image: "/posts/SQL-AGENT-.png"
 tags: [OpenAI, LangChain, Agents, SQL, PostgreSQL, Flask, LLM]
 ---
 
