@@ -1,7 +1,7 @@
 ---
 layout: post
 title: " Multimodal Flower Arrangement Query & Image Retrieval"
-image: "/posts/flower-arrangement-cover.png"
+image: "/posts/flower.jpg"
 tags: [Multimodal AI, Vision-Language, OpenCLIP, ChromaDB, GPT-4o, Streamlit, HuggingFace]
 ---
 
