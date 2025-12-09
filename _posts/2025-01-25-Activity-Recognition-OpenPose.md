@@ -266,7 +266,7 @@ This project demonstrates:
 
 # 🔗 GitHub Repository
 
-👉 https://github.com/YourUsername/Human-Activity-Recognition
+👉 [Click here to visit the GitHub repo]([https://github.com/LShahmiri](https://github.com/YourUsername/Human-Activity-Recognition)
 
 # 🎥 Demo App (Streamlit)
 
