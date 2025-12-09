@@ -531,8 +531,9 @@ Next steps include multi-document RAG, staff dashboards, and real-time API integ
 ---
 
 ### 🔗 Live Demo  
-👉 https://grocery-rag-chatbot-with-memory.streamlit.app
+👉 [APP](https://grocery-rag-chatbot-with-memory.streamlit.app)
 
 ### 🔗 GitHub Repository  
-👉 https://github.com/LShahmiri/Grocery-RAG-Chatbot
+👉 [GitHub](https://github.com/LShahmiri/Grocery-RAG-Chatbot)
+
 
