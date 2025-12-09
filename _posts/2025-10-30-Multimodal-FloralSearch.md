@@ -27,12 +27,12 @@ This project is a **multimodal AI system** that retrieves the most visually simi
 
 This application combines:
 
-- 🖼 **OpenCLIP image embeddings**
-- 🔍 **ChromaDB vector search**
-- 🌺 **Flowers-102 dataset**
-- 🤖 **GPT-4o multimodal reasoning**
-- 🎨 **A modern Streamlit UI**
-- 🔒 **AI Query Validator (GPT-4o-mini)**
+-  **OpenCLIP image embeddings**
+- **ChromaDB vector search**
+-  **Flowers-102 dataset**
+-  **GPT-4o multimodal reasoning**
+-  **A modern Streamlit UI**
+-  **AI Query Validator (GPT-4o-mini)**
 
 Users can write a natural language query such as:
 
@@ -58,11 +58,11 @@ User Query
 
 # 02. Dataset & Embeddings <a name="dataset"></a>
 
-### 🌼 Flowers-102 (HuggingFace)
+###  Flowers-102 (HuggingFace)
 Used for visual similarity search.  
 Images are cached locally and indexed in **ChromaDB**.
 
-### 🔍 Embedding Model
+###  Embedding Model
 **OpenCLIPEmbeddingFunction**  
 Used for both:
 
@@ -111,12 +111,12 @@ Only real flower descriptions are processed.
 
 | Feature | Description |
 |--------|-------------|
-| 🖼 Image Retrieval | CLIP-based similarity search |
-| 🎨 Recommendations | GPT-4o florist-style suggestions |
-| 💬 Natural Language | Free-form text input |
-| 🛡 Validation | GPT-4o-mini query filtering |
-| ⚡ Real-Time | Streamlit interactive UI |
-| 📦 Dataset | Flowers-102 |
+|  Image Retrieval | CLIP-based similarity search |
+|  Recommendations | GPT-4o florist-style suggestions |
+|  Natural Language | Free-form text input |
+|  Validation | GPT-4o-mini query filtering |
+|  Real-Time | Streamlit interactive UI |
+|  Dataset | Flowers-102 |
 
 ---
 
