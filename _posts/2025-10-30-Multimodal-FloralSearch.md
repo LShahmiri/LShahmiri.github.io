@@ -12,7 +12,7 @@ This project is a **multimodal AI system** that retrieves the most visually simi
 
 ---
 
-# 📘 Table of Contents
+#  Table of Contents
 - [00. Project Overview](#overview)
 - [01. System Architecture](#architecture)
 - [02. Dataset & Embeddings](#dataset)
