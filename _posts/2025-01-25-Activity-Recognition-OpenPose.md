@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Human Activity Recognition – OpenPose Skeleton + 3D CNN Classification"
-image: "/posts/HAR.jpg"
+image: "/posts/HAR3.jpg"
 tags: [Deep Learning, OpenPose, 3D-CNN, Streamlit, Pose Estimation, Action Recognition]
 ---
 
