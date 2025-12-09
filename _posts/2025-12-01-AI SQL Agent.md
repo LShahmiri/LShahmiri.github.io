@@ -179,8 +179,9 @@ Next steps:
 
 # 🔗 Live Demo <a name="demo"></a>
 
-👉 https://sql-agent-1-te6s.onrender.com/
+👉 [APP](https://sql-agent-1-te6s.onrender.com/)
 
 # 🔗 GitHub Repository
 
-👉 https://github.com/LShahmiri/SQL-Agent  
+👉 [GitHub](https://github.com/LShahmiri/SQL-Agent  )
+
