@@ -1,136 +1,145 @@
+---
+layout: post
+title: " Multimodal Flower Arrangement Query & Image Retrieval"
+image: "/posts/flower-arrangement-cover.png"
+tags: [Multimodal AI, Vision-Language, OpenCLIP, ChromaDB, GPT-4o, Streamlit, HuggingFace]
+---
+
 # Multimodal Flower Arrangement Query & Image Retrieval  
-### A Vision–Language AI for Flower Search, Matching, and Bouquet Recommendations
+### A Vision–Language AI for Flower Search, Matching & Bouquet Recommendations
 
-This project is a **multimodal AI system** that retrieves the most visually similar flowers to a user’s natural-language description and then generates **personalized bouquet recommendations** using OpenAI’s GPT-4o.
-
-It integrates:
-
-- 🖼 **OpenCLIP embeddings** for image understanding  
-- 🔍 **ChromaDB vector search** for similarity retrieval  
-- 🌺 **Flowers-102 dataset** (HuggingFace)  
-- 🤖 **GPT-4o Vision + Text** for florist-style recommendations  
-- 🎨 **Modern Streamlit UI** for a smooth user experience  
-- 🛡️ **AI Query Validator** to ensure only flower-related queries are processed  
+This project is a **multimodal AI system** that retrieves the most visually similar flowers to a user’s natural-language description and then generates **professional bouquet recommendations** using OpenAI’s GPT-4o.
 
 ---
 
-## 🚀 Key Features
-
-### **1. Text-Based Flower Search**
-Users freely describe flowers, e.g.:
-
-- “pink flowers with soft petals”
-- “yellow round-petal flower”
-- “elegant red flowers for a birthday gift”
-
-The system embeds the text, compares it with image embeddings, and retrieves the closest visual matches.
+# 📘 Table of Contents
+- [00. Project Overview](#overview)
+- [01. System Architecture](#architecture)
+- [02. Dataset & Embeddings](#dataset)
+- [03. Multimodal LLM Pipeline](#pipeline)
+- [04. Streamlit Web Application](#ui)
+- [05. Full Capabilities](#capabilities)
+- [06. Discussion](#discussion)
 
 ---
 
-### **2. Intelligent Image Retrieval (OpenCLIP + ChromaDB)**
+# 00. Project Overview <a name="overview"></a>
 
-The backend performs:
+This application combines:
 
-- Preprocessing and loading of the Flowers-102 dataset  
-- On-disk caching of images  
-- Embedding using OpenCLIP  
-- Storing + searching vectors with ChromaDB  
+- 🖼 **OpenCLIP image embeddings**
+- 🔍 **ChromaDB vector search**
+- 🌺 **Flowers-102 dataset**
+- 🤖 **GPT-4o multimodal reasoning**
+- 🎨 **A modern Streamlit UI**
+- 🔒 **AI Query Validator (GPT-4o-mini)**
 
-This allows **fast and accurate text-to-image retrieval**.
+Users can write a natural language query such as:
 
----
+> “Elegant pink lilies with soft petals for birthday gift.”
 
-### **3. Multimodal LLM Recommendations (GPT-4o)**
-
-The LLM receives:
-
-- User's flower description  
-- Top 2 matched images (Base64 encoded)  
-
-And produces:
-
-- High-quality bouquet arrangements  
-- Color harmony suggestions  
-- Flower combinations  
-- Personalized gift messages  
-
-Perfect for event planning, florists, gifting, or creative design inspiration.
+The system retrieves the most visually similar flowers and provides **personalized bouquet arrangement suggestions**.
 
 ---
 
-### **4. AI Query Validator (GPT-4o-mini)**
+# 01. System Architecture <a name="architecture"></a>
 
-To maintain product quality, the system rejects irrelevant queries:
+**Pipeline Overview**
+
+User Query  
+→ Query Validator (GPT-4o-mini)  
+→ OpenCLIP Text Embedding  
+→ ChromaDB Vector Search  
+→ Retrieve Top Flower Images  
+→ GPT-4o Multimodal Florist Recommendation  
+→ Streamlit Output  
+
+---
+
+# 02. Dataset & Embeddings <a name="dataset"></a>
+
+### 🌼 Flowers-102 (HuggingFace)
+Used for visual similarity search.  
+Images are cached locally and indexed in **ChromaDB**.
+
+### 🔍 Embedding Model
+**OpenCLIPEmbeddingFunction**  
+Used for both:
+
+- Flower images  
+- User text descriptions  
+
+---
+
+# 03. Multimodal LLM Pipeline <a name="pipeline"></a>
+
+GPT-4o receives:
+
+- Text description  
+- Two retrieved flower images (Base64)  
+
+And outputs:
+
+- Bouquet arrangement ideas  
+- Floral combinations  
+- Color harmony explanation  
+- Personalized stylist suggestions  
+
+---
+
+# 04. Streamlit Web Application <a name="ui"></a>
+
+### Key UI Features
+- Pink/Gold gradient modern dashboard  
+- Animated search box  
+- 2-column flower gallery  
+- Highlighted “Bouquet Suggestion” box  
+- Error handling + input filtering  
+
+### Query Validator  
+Rejects non-floral queries:
 
 ❌ “hi”  
-❌ “play music”  
+❌ “what is your name”  
 ❌ “translate this sentence”  
 
-Only genuine *flower descriptions* are accepted.
+Only real flower descriptions are processed.
 
 ---
 
-## 🖼 Streamlit UI
+# 05. Full Capabilities <a name="capabilities"></a>
 
-The interface includes:
-
-- Gradient header design  
-- Search box with validation  
-- Display of matched images in a 2-column layout  
-- A highlighted suggestion panel  
-- Full mobile and desktop responsiveness  
-
-Modern, colorful, elegant — suitable for production demos or portfolios.
-
----
-
-## 🧠 Tech Stack
-
-| Component | Technology |
-|----------|------------|
-| Embeddings | OpenCLIP |
-| Vector DB | ChromaDB |
-| LLM | OpenAI GPT-4o & GPT-4o-mini |
-| Dataset | HuggingFace Flowers-102 |
-| Frontend | Streamlit |
-| Backend Language | Python |
+| Feature | Description |
+|--------|-------------|
+| 🖼 Image Retrieval | CLIP-based similarity search |
+| 🎨 Recommendations | GPT-4o florist-style suggestions |
+| 💬 Natural Language | Free-form text input |
+| 🛡 Validation | GPT-4o-mini query filtering |
+| ⚡ Real-Time | Streamlit interactive UI |
+| 📦 Dataset | Flowers-102 |
 
 ---
 
-## 📂 Repository Structure
-/project
-│
-├── app.py # Streamlit application
-├── data/ # ChromaDB persistent storage
-├── images/ # Cached flower images
-├── requirements.txt
-└── README.md
-/project
-│
-├── app.py # Streamlit application
-├── data/ # ChromaDB persistent storage
-├── images/ # Cached flower images
-├── requirements.txt
-└── README.md
+# 06. Discussion <a name="discussion"></a>
+
+This project demonstrates:
+
+- Vision–Language fusion  
+- Vector retrieval with embeddings  
+- Multimodal prompting  
+- High-quality UI engineering  
+- Real-world assistant for event planners & florists  
+
+Future Extensions:
+- Support for color palette extraction  
+- Bouquet style classification  
+- Personalized gift messages  
+- Flower shop integration API  
 
 ---
 
-## 🌼 Why This Project Matters
+# 🔗 GitHub Repository  
+👉 *(add your repo link here)*  
 
-This project demonstrates a real-world **multimodal AI pipeline**:
-
-- Vision + language fusion  
-- Vector search + embeddings  
-- Prompt engineering  
-- Interactive applications  
-- OpenAI GPT-4o multimodal reasoning  
-
-It showcases how AI can support **creative industries** such as floristry, gifting, branding, and design.
-
----
-
-### 🔗 GitHub Repository  
-👉 [GitHub](https://github.com/LShahmiri/Multimodal-FloralSearch/tree/main)
----
-
-
+# 🖼 Cover Image  
+Place a file named **flower-arrangement-cover.png** under:  
