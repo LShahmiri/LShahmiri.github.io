@@ -139,7 +139,5 @@ Future Extensions:
 ---
 
 # 🔗 GitHub Repository  
-👉 *(add your repo link here)*  
-
-# 🖼 Cover Image  
-Place a file named **flower-arrangement-cover.png** under:  
+👉 [GitHub](https://github.com/LShahmiri/Multimodal-FloralSearch/tree/main)
+---
