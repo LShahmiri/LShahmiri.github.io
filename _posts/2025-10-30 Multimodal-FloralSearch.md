@@ -129,9 +129,8 @@ It showcases how AI can support **creative industries** such as floristry, gifti
 
 ---
 
-## 📸 Demo Preview  
-*(Add screenshots here if you want — UI looks beautiful!)*
-
+### 🔗 GitHub Repository  
+👉 [GitHub](https://github.com/LShahmiri/Multimodal-FloralSearch/tree/main)
 ---
 
 
