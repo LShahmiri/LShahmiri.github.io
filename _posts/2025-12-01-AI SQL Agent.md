@@ -7,7 +7,7 @@ tags: [OpenAI, LangChain, Agents, SQL, PostgreSQL, Flask, LLM]
 
 This project delivers a fully functional **AI-powered SQL Agent** capable of understanding **natural-language questions** and converting them into **optimized, safe SQL queries** with human-friendly explanations.
 
-It integrates **LangChain Agents**, **OpenAI GPT-4.1** (or GPT-5 if available), **PostgreSQL**, and **Flask**, enabling intelligent and secure querying of structured data.
+It integrates **LangChain Agents**, **OpenAI GPT-4.1**, **PostgreSQL**, and **Flask**, enabling intelligent and secure querying of structured data.
 
 A live demo is deployed via **Render Cloud**, supporting real-time interactions through a simple web interface.
 
