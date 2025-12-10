@@ -10,7 +10,7 @@ This project delivers a fully functional **AI-powered SQL Agent** capable of und
 It integrates **LangChain Agents**, **OpenAI GPT-4.1**, **PostgreSQL**, and **Flask**, enabling intelligent and secure querying of structured data.
 
 A live demo is deployed via **Render Cloud**, supporting real-time interactions through a simple web interface.
----
+
 # 🔗 Live Demo <a name="demo"></a>
 
 👉 [APP](https://sql-agent-1-te6s.onrender.com/)
