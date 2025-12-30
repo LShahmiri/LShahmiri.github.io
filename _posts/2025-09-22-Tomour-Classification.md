@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Brain Tumor Classification – MIGT vs Random Dataset Splitting"
-image: "/posts/brain-tumor-migt.png"
+image: "/posts/Brain-Tomour.png"
 tags: [DeepLearning, ComputerVision, CNN, Xception, MIGT, MedicalAI, Python, TensorFlow]
 ---
 
