@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Brain Tumor Classification – MIGT vs Random Dataset Splitting"
+title: "Brain Tumour Classification – MIGT vs Random Dataset Splitting"
 image: "/posts/Brain-Tomour.png"
 tags: [DeepLearning, ComputerVision, CNN, Xception, MIGT, MedicalAI, Python, TensorFlow]
 ---
 
-This project presents a **comparative study between Mutual Information Guided Training (MIGT)** and **random dataset splitting** for **brain tumor classification from MRI images** using a deep convolutional neural network.
+This project presents a **comparative study between Mutual Information Guided Training (MIGT)** and **random dataset splitting** for **brain tumour classification from MRI images** using a deep convolutional neural network.
 
 ---
 
@@ -28,7 +28,7 @@ This project presents a **comparative study between Mutual Information Guided Tr
 
 ## Context <a name="context"></a>
 
-Brain tumor classification from MRI scans is a critical medical imaging task where **data bias and improper dataset splitting** can significantly inflate performance metrics.
+Brain tumour classification from MRI scans is a critical medical imaging task where **data bias and improper dataset splitting** can significantly inflate performance metrics.
 
 Traditional random splitting may:
 - Overrepresent similar images in training and test sets
@@ -75,7 +75,7 @@ Key observations:
 ## Growth / Next Steps <a name="growth"></a>
 
 Future extensions include:
-- Applying MIGT to multi-class tumor grading
+- Applying MIGT to multi-class tumour grading
 - Integrating explainability (Grad-CAM, SHAP)
 - Testing MIGT on multi-institution MRI datasets
 - Combining MIGT with clustering-based sampling
@@ -87,7 +87,7 @@ Future extensions include:
 
 - Modality: Brain MRI
 - Classes:
-  - Brain Tumor
+  - Brain Tumour
   - Healthy
 - Image size: 224 × 224
 - Split ratio:
@@ -182,7 +182,6 @@ The approach aligns with **trustworthy and explainable medical AI principles**.
 ---
 
 ### 🔗 GitHub Repository  
-👉 *Add your repository link here*
+👉 *https://github.com/LShahmiri/Brain-tumour-classification/tree/main*
 
-### 🔗 Portfolio  
-👉 *Add your portfolio link here*
+
