@@ -182,6 +182,6 @@ The approach aligns with **trustworthy and explainable medical AI principles**.
 ---
 
 ### 🔗 GitHub Repository  
-👉 *https://github.com/LShahmiri/Brain-tumour-classification/tree/main*
+👉[GitHub](https://github.com/LShahmiri/Brain-tumour-classification/tree/main)
 
 
