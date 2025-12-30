@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Weather Dashboard – Streamlit Web Application"
-image: "/posts/weather.jpg"
+image: "/posts/weather.bmp"
 tags: [Python, Streamlit, REST API, OpenWeatherMap, WebApp, Data]
 ---
 
