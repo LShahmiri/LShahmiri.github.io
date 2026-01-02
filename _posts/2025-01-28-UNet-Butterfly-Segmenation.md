@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Butterfly Segmentation – U-Net with MobileNetV2 Encoder"
-image: "/posts/Butterfly.png"
+image: "/posts/Butterfly2.png"
 tags: [ComputerVision, ImageSegmentation, UNet, MobileNetV2, TensorFlow, Keras, BinarySegmentation, U-Net, DeepLearning, Python]
 ---
 
