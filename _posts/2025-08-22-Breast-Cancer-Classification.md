@@ -156,7 +156,18 @@ The goal is to highlight their impact on overfitting and generalization.
 ---
 
 ### Training vs Validation Loss
-![random loss](/img/rand-loss.png)
+**Random Sampling** 
+
+<img width="846" height="393" alt="rand-loss" src="https://github.com/user-attachments/assets/aa90f1de-2b67-428f-9c15-4f44faae17ed" />
+
+**MIGT (Grayscale)**
+
+<img width="846" height="393" alt="gray-migt-loss" src="https://github.com/user-attachments/assets/f21c1966-02cd-49c7-8026-773f5c17a23d" />
+
+**MIGT (RGB)** 
+
+<img width="846" height="393" alt="rgb-migt-loss" src="https://github.com/user-attachments/assets/febc284a-c62f-4ac1-99e1-0859c5952780" />
+
 
 - **Random Sampling** exhibits a large gap between training and validation loss,
   indicating severe overfitting.
@@ -168,7 +179,17 @@ The goal is to highlight their impact on overfitting and generalization.
 ---
 
 ### Training vs Validation Accuracy
-![Training vs Validation Accuracy](/img/breast_accuracy.png)
+**Random Sampling**
+
+<img width="855" height="393" alt="rand-acc" src="https://github.com/user-attachments/assets/309faba0-03b5-4503-afe0-e8b20d87616e" />
+
+**MIGT (Grayscale)**
+
+<img width="855" height="393" alt="gray-migt-acc" src="https://github.com/user-attachments/assets/5517b7aa-c395-4d70-8609-8f00525d7e29" />
+
+**MIGT (RGB)**
+
+<img width="855" height="393" alt="rgb-migt-acc" src="https://github.com/user-attachments/assets/fde851b0-fa74-424e-ba25-58e686371c5a" />
 
 - **Random Sampling** achieves high training accuracy but suffers from unstable
   validation performance, reflecting poor generalization.
