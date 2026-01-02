@@ -146,6 +146,46 @@ model.compile(
 )
 
 ---
+# Training Dynamics (Loss & Accuracy)
+
+The following training curves compare **three dataset selection strategies**
+under **identical training conditions**:
+**Random sampling**, **MIGT on RGB images**, and **MIGT on grayscale images**.
+The goal is to highlight their impact on overfitting and generalization.
+
+---
+
+### Training vs Validation Loss
+![Training vs Validation Loss](/img/breast_loss.png)
+
+- **Random Sampling** exhibits a large gap between training and validation loss,
+  indicating severe overfitting.
+- **MIGT (Grayscale)** reduces this gap, suggesting improved regularization
+  through guided sample selection.
+- **MIGT (RGB)** shows the smallest loss gap and the most stable convergence,
+  demonstrating the strongest reduction in overfitting.
+
+---
+
+### Training vs Validation Accuracy
+![Training vs Validation Accuracy](/img/breast_accuracy.png)
+
+- **Random Sampling** achieves high training accuracy but suffers from unstable
+  validation performance, reflecting poor generalization.
+- **MIGT (Grayscale)** improves validation stability compared to random sampling,
+  though some fluctuation remains.
+- **MIGT (RGB)** provides the most consistent validation accuracy across epochs,
+  indicating superior generalization under the same model and hyperparameters.
+
+---
+
+**Key Observation:**  
+While all three approaches may reach comparable peak accuracy, **MIGT-based data
+selection—particularly on RGB images—substantially reduces overfitting**, showing
+that dataset construction has a stronger influence on generalization than model
+architecture alone.
+
+---
 
 # Discussion
 
@@ -156,8 +196,7 @@ This project demonstrates that:
 - Mutual Information provides a principled data-centric solution
 - RGB-based MIGT reduces overfitting more effectively than grayscale MI selection
 
-This work aligns with ongoing PhD research on robust and explainable deep learning
-for medical imaging.
+This work aligns with my PhD research on robust deep learning technique for medical imaging.
 
 ---
 ### 🔗 GitHub Repository  
