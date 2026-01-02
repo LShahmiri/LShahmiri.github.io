@@ -109,43 +109,6 @@ output:
   save_dir: outputs/migt_rgb
 
 ---
-
-# Core Python Logic (Simplified)
-
-base_model = tf.keras.applications.Xception(
-    weights="imagenet",
-    include_top=False,
-    input_shape=(224, 224, 3)
-)
-
-base_model.trainable = False
-
-inputs = keras.Input(shape=(224, 224, 3))
-x = tf.keras.applications.xception.preprocess_input(inputs)
-x = base_model(x, training=False)
-x = keras.layers.GlobalAveragePooling2D()(x)
-x = keras.layers.Dropout(0.3)(x)
-outputs = keras.layers.Dense(1, activation="sigmoid")(x)
-
-model = keras.Model(inputs, outputs)
-
-model.compile(
-    optimizer=keras.optimizers.Adam(1e-3),
-    loss="binary_crossentropy",
-    metrics=["accuracy", tf.keras.metrics.AUC(name="auc")]
-)
-
-for layer in base_model.layers[-30:]:
-    if not isinstance(layer, keras.layers.BatchNormalization):
-        layer.trainable = True
-
-model.compile(
-    optimizer=keras.optimizers.Adam(1e-5),
-    loss="binary_crossentropy",
-    metrics=["accuracy", tf.keras.metrics.AUC(name="auc")]
-)
-
----
 # Training Dynamics (Loss & Accuracy)
 
 The following training curves compare **three dataset selection strategies**
