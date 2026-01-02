@@ -161,7 +161,5 @@ for medical imaging.
 
 ---
 
-GitHub Repository: add your link here  
+GitHub Repository: https://github.com/LShahmiri/CancerGuard-Breast
 
-Disclaimer:  
-This project is for research and educational purposes only and is not intended for clinical use.
