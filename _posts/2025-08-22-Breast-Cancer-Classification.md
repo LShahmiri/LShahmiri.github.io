@@ -156,7 +156,7 @@ The goal is to highlight their impact on overfitting and generalization.
 ---
 
 ### Training vs Validation Loss
-![Training vs Validation Loss](/img/breast_loss.png)
+![random loss](/img/rand-loss.png)
 
 - **Random Sampling** exhibits a large gap between training and validation loss,
   indicating severe overfitting.
