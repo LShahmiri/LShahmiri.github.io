@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Breast Cancer Histopathology Classification – Reducing Overfitting via MIGT"
-image: "/posts/breast_cancer_migt.png"
+image: "/posts/breastcancer.png"
 tags: [DeepLearning, CNN, MedicalImaging, Xception, Overfitting, MIGT, Python, TensorFlow]
 ---
 
