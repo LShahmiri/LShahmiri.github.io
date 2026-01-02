@@ -160,6 +160,6 @@ This work aligns with ongoing PhD research on robust and explainable deep learni
 for medical imaging.
 
 ---
-
-GitHub Repository: https://github.com/LShahmiri/CancerGuard-Breast
+### 🔗 GitHub Repository  
+👉 [GitHub](https://github.com/LShahmiri/CancerGuard-Breast)
 
