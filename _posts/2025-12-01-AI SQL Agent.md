@@ -177,11 +177,11 @@ Next steps:
 - Add caching for performance  
 
 ---
-🔗 Live Demo <a name="demo"></a>
+### 🔗 Live Demo <a name="demo"></a>
 
 👉 [APP](https://sql-agent-1-te6s.onrender.com/)
 
-🔗 GitHub Repository <a name="GitHub"></a>
+### 🔗 GitHub Repository <a name="GitHub"></a>
 
 👉 [GitHub](https://github.com/LShahmiri/SQL-Agent)
 
