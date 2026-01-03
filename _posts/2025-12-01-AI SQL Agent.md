@@ -11,13 +11,7 @@ It integrates **LangChain Agents**, **OpenAI GPT-4.1**, **PostgreSQL**, and **Fl
 
 A live demo is deployed via **Render Cloud**, supporting real-time interactions through a simple web interface.
 
-# 🔗 Live Demo <a name="demo"></a>
 
-👉 [APP](https://sql-agent-1-te6s.onrender.com/)
-
-# 🔗 GitHub Repository <a name="GitHub"></a>
-
-👉 [GitHub](https://github.com/LShahmiri/SQL-Agent)
 ---
 
 # Table of Contents
@@ -183,5 +177,11 @@ Next steps:
 - Add caching for performance  
 
 ---
+🔗 Live Demo <a name="demo"></a>
 
+👉 [APP](https://sql-agent-1-te6s.onrender.com/)
+
+🔗 GitHub Repository <a name="GitHub"></a>
+
+👉 [GitHub](https://github.com/LShahmiri/SQL-Agent)
 
