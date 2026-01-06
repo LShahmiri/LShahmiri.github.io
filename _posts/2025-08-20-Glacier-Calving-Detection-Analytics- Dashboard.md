@@ -61,7 +61,11 @@ Images were organised by month, with consistent camera geometry and resolution.
 
 Each image filename contains a timestamp, enabling precise temporal alignment.
 
-![Hansbreen time-lapse imagery](https://github.com/user-attachments/assets/153b85c5-4509-4b46-8bd1-559b7583c3e3)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/153b85c5-4509-4b46-8bd1-559b7583c3e3"
+       alt="Hansbreen time-lapse imagery"
+       width="800">
+</p>
 
 ---
 
@@ -80,11 +84,18 @@ Each detected event was recorded with:
 - Pixel area (event magnitude proxy)  
 - Spatial centroid (x, y)  
 
-![Calving detection via image differencing](https://github.com/user-attachments/assets/d410e7b8-0eaa-4476-9096-60a428c787c4)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d410e7b8-0eaa-4476-9096-60a428c787c4"
+       alt="Calving detection via image differencing"
+       width="800">
+</p>
 
 
-![Calving detection via image differencing](https://github.com/user-attachments/assets/77f26227-3cdf-4252-ab37-30d7577504b8)
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/77f26227-3cdf-4252-ab37-30d7577504b8"
+       alt="Calving detection via image differencing"
+       width="800">
+</p
 ---
 
 ## 4. Exploratory Analytics Dashboard
@@ -98,10 +109,18 @@ An interactive dashboard was built to explore the detected events:
 
 This allowed rapid quality control and high-level pattern discovery.
 
-![8](https://github.com/user-attachments/assets/2d3096b4-1bae-49f8-812c-04f547789357)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2d3096b4-1bae-49f8-812c-04f547789357"
+       alt="Calving detection via image differencing"
+       width="800">
+</p
 
 
-![9](https://github.com/user-attachments/assets/92603cf4-b4f6-4210-b814-51703e30762c)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/92603cf4-b4f6-4210-b814-51703e30762c"
+       alt="Calving detection via image differencing"
+       width="800">
+</p
 
 ---
 
