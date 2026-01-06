@@ -200,8 +200,28 @@ Events were classified into:
 - Submarine calving  
 - Sheet collapse  
 
-This approach prioritised **interpretability** over black-box modelling.
+```python
 
+# Interpretable rule-based calving style inference
+
+def classify_calving_event(area_px, centroid_y,
+                           waterline_y,
+                           large_thresh,
+                           small_thresh,
+                           tol=40):
+
+    if area_px >= large_thresh:
+        return "Sheet collapse"
+
+    if abs(centroid_y - waterline_y) <= tol:
+        return "Waterline calving"
+
+    if centroid_y > waterline_y and area_px <= small_thresh:
+        return "Submarine calving"
+
+    return "Icefall"
+
+```
 
 
 <p align="center">
