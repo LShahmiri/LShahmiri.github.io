@@ -295,4 +295,4 @@ Potential extensions include:
 Python · OpenCV · NumPy · Pandas · Plotly · Dash · Google Colab
 
 🔗 Full implementation available on GitHub:
-[glacier_calving.ipynb](...)
+[glacier_calving.ipynb](https://github.com/LShahmiri/glacier-calving)
