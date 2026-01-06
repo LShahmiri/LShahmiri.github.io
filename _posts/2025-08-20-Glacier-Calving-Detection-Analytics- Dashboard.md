@@ -202,8 +202,6 @@ Events were classified into:
 
 ```python
 
-# Interpretable rule-based calving style inference
-
 def classify_calving_event(area_px, centroid_y,
                            waterline_y,
                            large_thresh,
