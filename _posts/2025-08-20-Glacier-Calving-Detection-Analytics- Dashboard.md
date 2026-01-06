@@ -95,7 +95,7 @@ Each detected event was recorded with:
   <img src="https://github.com/user-attachments/assets/f67c8476-0429-4f02-a3a1-afb577d08147"
        alt="Calving detection via image differencing"
        width="800">
-</p
+</p>
   
 ---
 
