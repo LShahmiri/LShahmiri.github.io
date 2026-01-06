@@ -98,7 +98,10 @@ An interactive dashboard was built to explore the detected events:
 
 This allowed rapid quality control and high-level pattern discovery.
 
-![Interactive calving analytics dashboard](/posts/glacier-calving/dashboard.png)
+![8](https://github.com/user-attachments/assets/2d3096b4-1bae-49f8-812c-04f547789357)
+
+
+![9](https://github.com/user-attachments/assets/92603cf4-b4f6-4210-b814-51703e30762c)
 
 ---
 
