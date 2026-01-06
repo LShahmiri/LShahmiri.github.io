@@ -88,7 +88,8 @@ Each detected event was recorded with:
   <img src="https://github.com/user-attachments/assets/d410e7b8-0eaa-4476-9096-60a428c787c4"
        alt="Calving detection via image differencing"
        width="800">
-
+</p>
+  
 <p align="center">
   <img src="https://github.com/user-attachments/assets/77f26227-3cdf-4252-ab37-30d7577504b8"
        alt="Calving detection via image differencing"
@@ -111,12 +112,13 @@ This allowed rapid quality control and high-level pattern discovery.
   <img src="https://github.com/user-attachments/assets/2d3096b4-1bae-49f8-812c-04f547789357"
        alt="Calving detection via image differencing"
        width="800">
-
+</p>
+  
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/92603cf4-b4f6-4210-b814-51703e30762c"
+  <img src="https://github.com/user-attachments/assets/9dfd1556-4cf5-421e-9a77-fbfa41ac4d27"
        alt="Calving detection via image differencing"
        width="800">
-</p
+</p>
 
 ---
 
@@ -134,13 +136,13 @@ Seasonal comparison showed clear differences between **spring** and **summer**, 
   <img src="https://github.com/user-attachments/assets/a0776a49-1023-4339-b420-5fab5688848d"
        alt="Calving detection via image differencing"
        width="800">
-
+</p>
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ec1c0b08-ffe9-4421-b401-90f47b1d8f6e"
        alt="Calving detection via image differencing"
        width="800">
-</p
+</p>
 
 ---
 
@@ -163,16 +165,17 @@ This approach prioritised **interpretability** over black-box modelling.
   <img src="https://github.com/user-attachments/assets/45c5a895-1719-4f51-ae95-9b8bb69504d9"
        alt="Calving detection via image differencing"
        width="800">
-
+</p>
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/7d3df6f7-e719-4559-b751-0e63f4037c57"
        alt="Calving detection via image differencing"
        width="800">
-</p
+</p>
 
 
 ---
+
 
 ## 7. Key Results
 
