@@ -81,6 +81,8 @@ Each detected event was recorded with:
 - Spatial centroid (x, y)  
 
 ![Calving detection via image differencing](https://github.com/user-attachments/assets/d410e7b8-0eaa-4476-9096-60a428c787c4)
+
+
 ![Calving detection via image differencing](https://github.com/user-attachments/assets/77f26227-3cdf-4252-ab37-30d7577504b8)
 
 ---
@@ -111,6 +113,7 @@ Seasonal comparison showed clear differences between **spring** and **summer**, 
 
 <img width="1024" height="641" alt="4" src="https://github.com/user-attachments/assets/a0776a49-1023-4339-b420-5fab5688848d" />
 
+
 <img width="1990" height="595" alt="5" src="https://github.com/user-attachments/assets/ec1c0b08-ffe9-4421-b401-90f47b1d8f6e" />
 
 
@@ -132,6 +135,7 @@ Events were classified into:
 This approach prioritised **interpretability** over black-box modelling.
 
 ![6](https://github.com/user-attachments/assets/45c5a895-1719-4f51-ae95-9b8bb69504d9)
+
 
 ![7](https://github.com/user-attachments/assets/7d3df6f7-e719-4559-b751-0e63f4037c57)
 
