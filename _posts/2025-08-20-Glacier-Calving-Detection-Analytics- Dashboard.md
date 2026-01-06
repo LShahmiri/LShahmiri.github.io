@@ -143,6 +143,7 @@ Seasonal comparison showed clear differences between **spring** and **summer**, 
        width="800">
 </p>
 
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ec1c0b08-ffe9-4421-b401-90f47b1d8f6e"
        alt="Calving detection via image differencing"
@@ -173,6 +174,7 @@ This approach prioritised **interpretability** over black-box modelling.
        alt="Calving detection via image differencing"
        width="800">
 </p>
+
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/7d3df6f7-e719-4559-b751-0e63f4037c57"
