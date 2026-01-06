@@ -28,10 +28,11 @@ Overall, this dataset is well suited for event-based image analysis, change dete
 2. Data & Image Acquisition  
 3. Calving Event Detection  
 4. Exploratory Analytics Dashboard  
-5. Spatial Heatmaps & Seasonal Patterns  
-6. Rule-Based Calving Style Classification  
-7. Key Results  
-8. Growth & Next Steps  
+5. Spatial Heatmaps & Seasonal Patterns
+6. Terminus Zone-Based Analysis
+7. Rule-Based Calving Style Classification  
+8. Key Results  
+9. Growth & Next Steps  
 
 ---
 
