@@ -221,8 +221,8 @@ df["zone"] = pd.cut(
 
 
 Zone-based analysis revealed clear spatial heterogeneity in calving behaviour along the glacier terminus. 
-Certain zones exhibited higher proportions of submarine or waterline calving, while others were dominated by icefall or large sheet-collapse events. 
-This spatial variability highlights the importance of local glacier geometry and ocean–ice interactions in controlling calving dynamics.
+Relative differences in the proportion of calving styles were observed between zones, with some regions showing increased contributions from submarine or waterline calving, while others were dominated by icefall and large sheet-collapse events. 
+This spatial variability is consistent with the influence of local glacier geometry and ocean–ice interactions on calving dynamics.
 
 
 ## 7. Rule-Based Calving Style Classification
