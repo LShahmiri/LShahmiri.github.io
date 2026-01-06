@@ -186,8 +186,46 @@ heatmap, _, _ = np.histogram2d(
 </p>
 
 ---
+---
 
-## 6. Rule-Based Calving Style Classification
+## 6. Terminus Zone-Based Analysis
+
+To investigate spatial variability along the glacier front in more detail, the glacier terminus was subdivided into longitudinal zones based on the horizontal (x-axis) position of detected calving event centroids.
+
+The image width was approximated from the maximum observed centroid coordinate, and the terminus was divided into five equally spaced zones. Each calving event was assigned to a zone based on its centroid location.
+
+This zonal representation enables comparison of calving frequency and style across different sections of the glacier front.
+
+```python
+# Infer image width from centroid distribution
+image_width = df["centroid_x"].max() * 1.05
+
+# Define terminus zones
+zone_edges = np.linspace(0, image_width, 6)
+zone_labels = ["Zone I", "Zone II", "Zone III", "Zone IV", "Zone V"]
+
+# Assign zones based on horizontal position
+df["zone"] = pd.cut(
+    df["centroid_x"],
+    bins=zone_edges,
+    labels=zone_labels,
+    include_lowest=True
+)
+```
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/7d3df6f7-e719-4559-b751-0e63f4037c57"
+       alt="Calving detection via image differencing"
+       width="800">
+</p>
+
+
+Zone-based analysis revealed clear spatial heterogeneity in calving behaviour along the glacier terminus. 
+Certain zones exhibited higher proportions of submarine or waterline calving, while others were dominated by icefall or large sheet-collapse events. 
+This spatial variability highlights the importance of local glacier geometry and ocean–ice interactions in controlling calving dynamics.
+
+
+## 7. Rule-Based Calving Style Classification
 
 A transparent, rule-based system was introduced to infer calving styles based on:
 
@@ -228,17 +266,9 @@ def classify_calving_event(area_px, centroid_y,
        width="800">
 </p>
 
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/7d3df6f7-e719-4559-b751-0e63f4037c57"
-       alt="Calving detection via image differencing"
-       width="800">
-</p>
-
-
 ---
 
-## 7. Key Results
+## 8. Key Results
 
 - Over **500,000** calving-related change events detected  
 - Strong spatial clustering along the glacier terminus  
@@ -249,7 +279,7 @@ This demonstrates that simple, explainable computer vision methods can scale to 
 
 ---
 
-## 8. Growth & Next Steps
+## 9. Growth & Next Steps
 
 Potential extensions include:
 
