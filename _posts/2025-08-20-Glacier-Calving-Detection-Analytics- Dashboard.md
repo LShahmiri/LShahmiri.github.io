@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Glacier Calving Detection & Spatio-Temporal Analysis Using Computer Vision
-image: "/posts/glacier-calving/glac.png"
+image: "/posts/glacier-calving/glac1.png"
 tags: [Computer Vision, Image Processing, Time-Series, Geospatial Analysis, Python]
 ---
 
