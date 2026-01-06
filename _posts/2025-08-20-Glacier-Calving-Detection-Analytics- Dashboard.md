@@ -77,12 +77,29 @@ Calving events were detected using **pairwise image differencing**:
 2. Absolute pixel-wise differences were computed  
 3. Thresholding isolated significant changes  
 4. Morphological filtering removed noise  
-5. Connected components identified candidate calving events  
-
+5. Connected components identified candidate calving events
+   
 Each detected event was recorded with:
 - Timestamp  
 - Pixel area (event magnitude proxy)  
-- Spatial centroid (x, y)  
+- Spatial centroid (x, y)
+
+# Preprocess consecutive images
+gray_t1 = cv2.GaussianBlur(cv2.cvtColor(img_t1, cv2.COLOR_BGR2GRAY), (5,5), 0)
+gray_t2 = cv2.GaussianBlur(cv2.cvtColor(img_t2, cv2.COLOR_BGR2GRAY), (5,5), 0)
+
+# Image differencing
+diff = cv2.absdiff(gray_t2, gray_t1)
+
+# Threshold significant changes
+_, binary = cv2.threshold(diff, THRESH, 255, cv2.THRESH_BINARY)
+
+# Remove noise
+binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel)
+
+# Extract connected components
+num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(binary)
+
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/d410e7b8-0eaa-4476-9096-60a428c787c4"
