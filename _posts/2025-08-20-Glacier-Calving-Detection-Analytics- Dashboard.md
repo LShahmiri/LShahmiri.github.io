@@ -89,12 +89,14 @@ Each detected event was recorded with:
        alt="Calving detection via image differencing"
        width="800">
 </p>
-  
+
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/77f26227-3cdf-4252-ab37-30d7577504b8"
+  <img src="https://github.com/user-attachments/assets/f67c8476-0429-4f02-a3a1-afb577d08147"
        alt="Calving detection via image differencing"
        width="800">
 </p
+  
 ---
 
 ## 4. Exploratory Analytics Dashboard
@@ -108,11 +110,13 @@ An interactive dashboard was built to explore the detected events:
 
 This allowed rapid quality control and high-level pattern discovery.
 
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/2d3096b4-1bae-49f8-812c-04f547789357"
        alt="Calving detection via image differencing"
        width="800">
 </p>
+
   
 <p align="center">
   <img src="https://github.com/user-attachments/assets/9dfd1556-4cf5-421e-9a77-fbfa41ac4d27"
@@ -175,7 +179,6 @@ This approach prioritised **interpretability** over black-box modelling.
 
 
 ---
-
 
 ## 7. Key Results
 
