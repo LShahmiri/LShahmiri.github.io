@@ -140,6 +140,8 @@ The web interface allows:
 ---
 
 # 05. Full Code <a name="code"></a>
+
+```
 ##################################################################################################
 # 01 - Bring in .env information
 ##################################################################################################
@@ -233,6 +235,7 @@ user_query = "on average which gender lives furtherest from the store"
 
 result = agent.invoke({"messages": [HumanMessage(content=user_query)]})
 print(result["messages"][-1].content)
+```
 
 Key components include:
 
