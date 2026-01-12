@@ -22,10 +22,9 @@ A live demo is deployed via **Render Cloud**, supporting real-time interactions 
 - [01. System Design](#design)
 - [02. Dataset & Schema](#schema)
 - [03. SQL Agent Architecture](#architecture)
-- [04. Prompt Engineering](#prompt)
-- [05. Flask Web App](#flask)
-- [06. Full Code](#code)
-- [07. Discussion](#discussion)
+- [04. Flask Web App](#flask)
+- [05. Full Code](#code)
+- [06. Discussion](#discussion)
 - [Live Demo](#demo)
 
 ---
@@ -125,13 +124,6 @@ The system prompt ensures:
 - Safe SQL  
 - Schema-aware behavior  
 - Clear reasoning steps  
-
----
-
-# 04. Prompt Engineering <a name="prompt"></a>
-
-Example rules enforced:
-
 
 ---
 
