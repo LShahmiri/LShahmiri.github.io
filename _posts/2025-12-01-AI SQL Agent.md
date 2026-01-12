@@ -141,7 +141,7 @@ The web interface allows:
 
 # 05. Full Code <a name="code"></a>
 
-```
+```python
 ##################################################################################################
 # 01 - Bring in .env information
 ##################################################################################################
@@ -243,8 +243,6 @@ Key components include:
 - `agent/sql_agent_01.py` → SQL Agent logic  
 - `agent/sql-agent-system-prompt.txt` → System rules  
 - `requirements.txt` → Dependencies  
-
-Full code available in the GitHub repo.
 
 ---
 
