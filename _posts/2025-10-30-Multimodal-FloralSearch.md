@@ -130,12 +130,6 @@ This project demonstrates:
 - High-quality UI engineering  
 - Real-world assistant for event planners & florists  
 
-Future Extensions:
-- Support for color palette extraction  
-- Bouquet style classification  
-- Personalized gift messages  
-- Flower shop integration API  
-
 ---
 
 ### 🔗 GitHub Repository <a name="GitHub"></a>
