@@ -138,6 +138,7 @@ Future Extensions:
 
 ---
 
-# 🔗 GitHub Repository  
-👉 [GitHub](https://github.com/LShahmiri/Multimodal-FloralSearch/tree/main)
+### 🔗 GitHub Repository <a name="GitHub"></a>
+
+👉 [GitHub](https://github.com/LShahmiri/Multimodal-FloralSearch)
 ---
