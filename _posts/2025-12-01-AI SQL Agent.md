@@ -237,13 +237,6 @@ result = agent.invoke({"messages": [HumanMessage(content=user_query)]})
 print(result["messages"][-1].content)
 ```
 
-Key components include:
-
-- `app.py` → Flask application  
-- `agent/sql_agent_01.py` → SQL Agent logic  
-- `agent/sql-agent-system-prompt.txt` → System rules  
-- `requirements.txt` → Dependencies  
-
 ---
 
 # 06. Discussion <a name="discussion"></a>
