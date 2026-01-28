@@ -8,14 +8,14 @@ plugins:
 
 #-------------------------------
 # General Site Settings
-title: Lida Shahmiri 
+title: Lida Shahmiri, PhD
 description: "I am a Doctoral researcher in computer science, specialised in statistical modelling, with expertise in analysing large datasets using Python and ML to draw inferences. My specific interest is in developing scalable ML pipelines and promoting interdisciplinary research that combines AI theory and practice with domain expertise. I have worked with interdisciplinary teams and have strong communication skills, having delivered numerous research and outreach talks to diverse audiences. Please visit my Github & LinkedIn pages (or download my Resume) by using the links below!"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 #-------------------------------
 # About Section
-subtitle: PhD <span style="color:#f58506"> Portfolio </span>
+subtitle:  <span style="color:#f58506"> Portfolio </span>
 location: "Milton Keynes, UK"
 resume_url: /docs/Lida_Shahmiri_CV.pdf 
 avatar_image: /img/lida.jpeg
