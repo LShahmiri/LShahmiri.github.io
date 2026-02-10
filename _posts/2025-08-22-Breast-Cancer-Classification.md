@@ -155,6 +155,8 @@ Dataset selection can function as an implicit regularizer
 Mutual Information provides a principled, data-centric solution
 
 
-🔗 GitHub Repository
 
-👉 https://github.com/LShahmiri/CancerGuard-Breast
+### 🔗 GitHub Repository <a name="GitHub"></a>
+
+👉 [GitHub](https://github.com/LShahmiri/CancerGuard-Breast)
+
