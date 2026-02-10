@@ -5,206 +5,156 @@ image: "/posts/breastcancer.png"
 tags: [DeepLearning, CNN, MedicalImaging, Xception, Overfitting, MIGT, Python, TensorFlow]
 ---
 
-This project investigates how data selection strategies influence overfitting and generalization
+This project investigates how **data selection strategies** influence **overfitting and generalization**
 in breast cancer histopathology image classification using deep convolutional neural networks.
 
-Unlike conventional approaches that focus solely on model architecture, this study demonstrates
-that dataset partitioning alone can act as an implicit regularizer, significantly reducing overfitting
-under identical training conditions.
+Unlike conventional approaches that primarily focus on network architecture or regularization techniques,
+this study demonstrates that **dataset partitioning alone can act as an implicit regularizer**,
+significantly reducing overfitting under **identical training conditions**.
 
 ---
 
-# Project Overview
+## Project Overview
 
-Breast cancer histopathology classification is a challenging task due to high visual similarity
-between samples and strong sensitivity to dataset composition.
-Many deep learning models achieve high accuracy while suffering from severe overfitting.
+Breast cancer histopathology classification is a challenging task due to:
+- high visual similarity between tissue samples
+- strong sensitivity to dataset composition
+- limited robustness to biased data splits
 
-This project shows that data selection strategy alone can significantly reduce overfitting
-without modifying the model architecture.
+As a result, many deep learning models achieve high training accuracy
+while suffering from **poor generalization**.
+
+This project shows that **data selection strategy alone** can substantially reduce overfitting,
+without modifying the model architecture or training pipeline.
 
 ---
 
-# Experimental Design
+## Experimental Design
 
-All experiments were conducted under strictly identical conditions:
+All experiments were conducted under **strictly identical conditions**:
+
 - Same Xception CNN architecture
 - Same training schedule and hyperparameters
-- Same RGB images
+- Same data augmentation strategy
+- Same RGB input resolution
 
-Only the dataset selection strategy was changed.
-
----
-
-# Dataset & Preprocessing
-
-Dataset: BreaKHis  
-Classes: Benign / Malignant  
-Input size: 224 × 224  
-RGB and grayscale variants evaluated  
-MIGT subsets generated using Mutual Information  
+**Only the dataset selection strategy was changed**, allowing a fair comparison
+of its effect on overfitting and generalization.
 
 ---
 
-# MIGT vs Random Sampling
+## Dataset & Preprocessing
 
-Random Sampling  
-- High accuracy  
-- Severe overfitting  
-
-MIGT (Mutual Information Guided Training)  
-- MI-based sample selection  
-- Better generalization  
-- Reduced overfitting  
+- **Dataset:** BreaKHis
+- **Classes:** Benign / Malignant
+- **Input size:** 224 × 224
+- **Image formats:** RGB and grayscale variants
+- **MIGT subsets:** generated using Mutual Information–based grouping
 
 ---
 
-# Model Architecture
+## MIGT vs Random Sampling
 
-Backbone: Xception (ImageNet pretrained)  
-Global Average Pooling  
-Dropout (0.3)  
-Sigmoid output layer  
+### Random Sampling
+- High training accuracy
+- Large gap between training and validation performance
+- Pronounced overfitting
 
----
-
-# Training Strategy (Two-Stage Training)
-
-Stage 1 – Head Training  
-- Base model frozen  
-- Train classifier head  
-
-Stage 2 – Fine-Tuning  
-- Unfreeze last 30 convolutional layers  
-- Batch Normalization layers remain frozen  
-- Lower learning rate for stability  
+### MIGT (Mutual Information Guided Training)
+- High accuracy
+- MI-based guided sample selection
+- More balanced train/validation/test subsets
+- Improved generalization
+- Reduced overfitting
 
 ---
 
-# Configuration (YAML-style)
+## Model Architecture
 
-dataset:
-  base_dir: data/MIGT_DATASET_RGB
-  train_dir: train
-  val_dir: val
-  test_dir: test
-
-data:
-  img_size: [224, 224]
-  batch_size: 32
-  seed: 42
-
-training:
-  epochs: 100
-  patience: 6
-  head_lr: 0.001
-
-fine_tuning:
-  enabled: true
-  unfreeze_last_layers: 30
-  lr: 0.00001
-  epochs: 20
-
-output:
-  save_dir: outputs/migt_rgb
-
----
-# Training Dynamics (Loss & Accuracy)
-
-The following training curves compare **three dataset selection strategies**
-under **identical training conditions**:
-**Random sampling**, **MIGT on RGB images**, and **MIGT on grayscale images**.
-The goal is to highlight their impact on overfitting and generalization.
+- Backbone: **Xception** (ImageNet pretrained)
+- Global Average Pooling
+- Dropout (0.3)
+- Sigmoid output layer for binary classification
 
 ---
 
-### Training vs Validation Loss
-**Random Sampling** 
+## Training Strategy (Two-Stage Training)
 
-<p align="center">
-  <img width="846" height="393"
-       alt="rand-loss"
-       src="https://github.com/user-attachments/assets/aa90f1de-2b67-428f-9c15-4f44faae17ed" />
-</p>
+### Stage 1 – Head Training
+- Backbone frozen
+- Train classification head only
 
-**MIGT (Grayscale)**
-
-<p align="center">
-  <img width="846" height="393"
-       alt="gray-migt-loss"
-       src="https://github.com/user-attachments/assets/f21c1966-02cd-49c7-8026-773f5c17a23d" />
-</p>
-
-**MIGT (RGB)** 
-
-<p align="center">
-  <img width="846" height="393"
-       alt="rgb-migt-loss"
-       src="https://github.com/user-attachments/assets/febc284a-c62f-4ac1-99e1-0859c5952780" />
-</p>
-
-- **Random Sampling** exhibits a large gap between training and validation loss,
-  indicating severe overfitting.
-- **MIGT (Grayscale)** reduces this gap, suggesting improved regularization
-  through guided sample selection.
-- **MIGT (RGB)** shows the smallest loss gap and the most stable convergence,
-  demonstrating the strongest reduction in overfitting.
+### Stage 2 – Fine-Tuning
+- Unfreeze last 30 convolutional layers
+- Batch Normalization layers remain frozen
+- Lower learning rate for training stability
 
 ---
+
+## Training Dynamics (Loss & Accuracy)
+
+The following training curves compare two dataset selection strategies
+under identical training conditions:
+Random sampling, and MIGT on RGB images.
+
+The objective is to illustrate their impact on overfitting and generalization.
+
+### Training vs Validation Loss 
+
+#### Random Sampling
+
+<p align="center"> <img width="846" height="393" alt="31" src="https://github.com/user-attachments/assets/8b51d86e-1084-4f99-b7d6-8013804a34e7" />
+ </p>
+ 
+
+
+#### MIGT (RGB)
+
+<p align="center"> <img width="846" height="393" alt="11" src="https://github.com/user-attachments/assets/d79545c2-8ae7-4504-b280-923516655081" />
+ </p>
+
+Random sampling shows a large and persistent gap between training and validation loss,
+indicating severe overfitting.
+
+MIGT (RGB) reduces this gap, suggesting improved regularization via guided data selection.
 
 ### Training vs Validation Accuracy
-**Random Sampling**
 
-<p align="center">
-  <img width="846" height="393"
-       alt="rand-acc"
-       src="https://github.com/user-attachments/assets/309faba0-03b5-4503-afe0-e8b20d87616e" />
-</p>
+Random Sampling
 
-**MIGT (Grayscale)**
+<p align="center"> <img width="855" height="393" alt="32" src="https://github.com/user-attachments/assets/4baf82ec-42ca-4f58-ad77-1067f7017f8d" />
+ </p>
 
-<p align="center">
-  <img width="846" height="393"
-       alt="gray-migt-acc"
-       src="https://github.com/user-attachments/assets/5517b7aa-c395-4d70-8609-8f00525d7e29" />
-</p>
 
-**MIGT (RGB)**
+MIGT (RGB)
 
-<p align="center">
-  <img width="846" height="393"
-       alt="rgb-migt-acc"
-       src="https://github.com/user-attachments/assets/fde851b0-fa74-424e-ba25-58e686371c5a" />
-</p>
+<p align="center"> <img width="855" height="393" alt="22" src="https://github.com/user-attachments/assets/e05ca9ba-69e5-4e87-b8ad-655c163dc745" />
+ </p>
 
-- **Random Sampling** achieves high training accuracy but suffers from unstable
-  validation performance, reflecting poor generalization.
-- **MIGT (Grayscale)** improves validation stability compared to random sampling,
-  though some fluctuation remains.
-- **MIGT (RGB)** provides the most consistent validation accuracy across epochs,
-  indicating superior generalization under the same model and hyperparameters.
+
+MIGT (RGB) provides the most consistent validation accuracy across epochs,
+indicating superior generalization.
+
+### Key Observation:
+MIGT-based data selection—particularly on RGB images—substantially reduces overfitting.
+This highlights that dataset construction can have a stronger influence on generalization
+than model architecture alone.
 
 ---
 
-**Key Observation:**  
-While all three approaches may reach comparable peak accuracy, **MIGT-based data
-selection—particularly on RGB images—substantially reduces overfitting**, showing
-that dataset construction has a stronger influence on generalization than model
-architecture alone.
-
----
-
-# Discussion
+## Discussion
 
 This project demonstrates that:
-- High accuracy does not imply good generalization
-- Overfitting is not solely a model-level problem
-- Dataset selection can act as an implicit regularizer
-- Mutual Information provides a principled data-centric solution
-- RGB-based MIGT reduces overfitting more effectively than grayscale MI selection
 
-This work aligns with my PhD research on robust deep learning technique for medical imaging.
+High accuracy does not necessarily imply good generalization
 
----
-### 🔗 GitHub Repository  
-👉 [GitHub](https://github.com/LShahmiri/CancerGuard-Breast)
+Overfitting is not solely a model-level problem
+
+Dataset selection can function as an implicit regularizer
+
+Mutual Information provides a principled, data-centric solution
+
+
+🔗 GitHub Repository
+
+👉 https://github.com/LShahmiri/CancerGuard-Breast
