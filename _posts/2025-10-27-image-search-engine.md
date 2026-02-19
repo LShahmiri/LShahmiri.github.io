@@ -35,35 +35,10 @@ I pass in a search image, apply the same preprocessing steps and again extract t
 
 I use Cosine Similarity to compare the search feature vector with all base-set feature vectors, returned the N smallest values.  These represent our "most similar" images - the ones that would be returned to the customer.
 
-<br>
-<br>
 
 ### Results <a name="overview-results"></a>
 
 I test two different images, and plot the search results along with the cosine similarity scores.  You can see these in the dedicated section below.
-
-<br>
-<br>
-### Discussion, Growth & Next Steps <a name="overview-growth"></a>
-
-The way I have coded this up is very much for the "proof of concept".  In practice I would definitely have the last section of the code (where I submit a search) isolated, and running from all of the saved objects that I need - I wouldn't include it in a single script like I have here.
-
-Also, rather than having to fit the Nearest Neighbours to our *feature_vector_store* each time a search is submitted, I could store that object as well.
-
-When applying this in production, I also may want to code up a script that easily adds or removes images from the feature store.  The products that are available in the clients store would be changing all the time, so I'd want a nice easy way to add new feature vectors to the feature_vector_store object - and also potentially a way to remove search results coming back if that product was out of stock, or no longer part of the suite of products that were sold.
-
-Most likely, in production, this would just return a list of filepaths that the client's website could then pull forward as required - the matplotlib code is just for us to see it in action manually!
-
-This was tested only in one category, I would want to test on a broader array of categories - most likely having a saved network for each to avoid irrelevant predictions.
-
-I only looked at Cosine Similarity here, it would be interesting to investigate other distance metrics.
-
-It would be beneficial to come up with a way to quantify the quality of the search results.  This could come from customer feedback, or from click-through rates on the site.
-
-Here I utilised VGG16. It would be worthwhile testing other available pre-trained networks such as ResNet, Inception, and the DenseNet networks.
-
-<br>
-<br>
 
 ___
 
@@ -462,4 +437,5 @@ It would be beneficial to come up with a way to quantify the quality of the sear
 Here I utilised VGG16. It would be worthwhile testing other available pre-trained networks such as ResNet, Inception, and the DenseNet networks.
 
 👉 [GitHub](https://github.com/LShahmiri/Image-Search-Engine)
+
 
