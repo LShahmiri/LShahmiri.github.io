@@ -87,7 +87,9 @@ Interactive filters for:
 - Transaction Purpose
 
 These filters allow users to explore transaction behaviour across multiple dimensions.
-<img width="1212" height="235" alt="filter" src="https://github.com/user-attachments/assets/57f45636-cba0-4f22-b1db-9b81f647326b" />
+
+<p align="center"> <img width="1212" height="235" alt="filter" src="https://github.com/user-attachments/assets/57f45636-cba0-4f22-b1db-9b81f647326b" />
+</p>
 
 
 ---
@@ -125,9 +127,10 @@ Users can switch between multiple visualisation modes:
 - Column chart (Transaction Amount)
 - Line chart (Account Balance)
 - Column chart (Account Balance)
-<img width="1183" height="482" alt="line chart" src="https://github.com/user-attachments/assets/2a6e8e42-a615-4f9c-9834-8fb47a77ab6e" />
+<p align="center"> <img width="1183" height="482" alt="line chart" src="https://github.com/user-attachments/assets/2a6e8e42-a615-4f9c-9834-8fb47a77ab6e" /> </p>
 
-<img width="1008" height="384" alt="column chart" src="https://github.com/user-attachments/assets/a7214ca2-3b28-466e-a60e-988e3f0eaaf1" />
+<p align="center"> <img width="1262" height="485" alt="column chart" src="https://github.com/user-attachments/assets/33f1a0f9-e444-494a-b343-bdbebeb598b3" />
+</p>
 
 ---
 
