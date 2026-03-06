@@ -4,6 +4,9 @@ title: "Financial Transactions Analytics Dashboard – Power BI"
 image: "/posts/dash1.png"
 tags: [Power BI, Data Analytics, Dashboard, Data Visualization, Business Intelligence]
 ---
+<img width="1247" height="688" alt="dash (2)" src="https://github.com/user-attachments/assets/326355e9-7d9d-4824-8699-830bc594cb50" />
+
+
 
 This project presents an interactive **Financial Transactions Analytics Dashboard** built with **Power BI**, designed to explore transaction behaviour, financial flows, and balance patterns across multiple banks, cities, and payment methods.
 
