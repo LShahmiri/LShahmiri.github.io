@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Financial Transactions Analytics Dashboard – Power BI"
-image: "/posts/PowerBI.png"
+image: "/posts/dash1.png"
 tags: [Power BI, Data Analytics, Dashboard, Data Visualization, Business Intelligence]
 ---
 
