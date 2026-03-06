@@ -45,5 +45,4 @@ The objective is to help HR teams understand workforce behaviour and support dat
 - HR Data Analysis  
 
 ---
-[open the dashboard] (https://public.tableau.com/app/profile/lida.shahmiri/viz/HR-Dashboard_17606196579580/HRAnalyticalDashboard)
-
+👉 [open the dashboard](https://public.tableau.com/app/profile/lida.shahmiri/viz/HR-Dashboard_17606196579580/HRAnalyticalDashboard)
