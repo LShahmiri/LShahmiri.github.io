@@ -1,3 +1,11 @@
+
+---
+layout: post
+title: "HR Analytics Dashboard"
+image: "/posts/HR.png"
+tags: [HR-Dashboard,Tableau,Visualization,Data Analysis]
+
+---
 #  HR Analytics Dashboard
 
 ![Tool](https://img.shields.io/badge/Tool-Tableau-blue)
